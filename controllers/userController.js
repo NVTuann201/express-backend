@@ -7,7 +7,11 @@ exports.createUser = async (req, res) => {
     const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password: hashedPassword });
-    res.json(user);
+    res.json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
@@ -39,7 +43,9 @@ exports.logoutUser = (req, res) => {
 
 exports.getUserInfo = async (req, res) => {
   try {
-    const user = await User.findByPk(req.userId);
+    const user = await User.findByPk(req.userId, {
+      attributes: { exclude: ["password"] },
+    });
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
