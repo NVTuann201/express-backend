@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "nvt1207201",
+    "database": "express_backend",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
