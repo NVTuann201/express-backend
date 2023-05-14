@@ -4,13 +4,13 @@ const userController = require('../controllers/userController');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 // Create a new user
-router.post('/users', userController.createUser);
+router.post('/users', userController.create);
 
 // User login
-router.post('/login', userController.loginUser);
+router.post('/login', userController.login);
 
 // User logout
-router.post('/logout', authMiddleware, userController.logoutUser);
+router.post('/logout', authMiddleware, userController.logout);
 
 // Get user info
 router.get('/me', authMiddleware, userController.getUserInfo);

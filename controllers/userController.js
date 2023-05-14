@@ -2,7 +2,7 @@ const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-exports.createUser = async (req, res) => {
+exports.create = async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -18,7 +18,7 @@ exports.createUser = async (req, res) => {
   }
 };
 
-exports.loginUser = async (req, res) => {
+exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
@@ -37,7 +37,7 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-exports.logoutUser = (req, res) => {
+exports.logout = (req, res) => {
   res.json({ message: "Successfully logged out" });
 };
 
