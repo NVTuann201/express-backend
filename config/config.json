@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "nvt1207201",
+    "password": "admin_123",
     "database": "express_backend",
-    "host": "localhost",
+    "host": "192.168.4.204",
     "port": 5432,
     "dialect": "postgres"
   }
